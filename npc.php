@@ -303,7 +303,7 @@
 
 	if ($npc["merchant_id"]>0)
 	{
-		$query="SELECT $tbitems.id,$tbitems.Name,$tbitems.price,$tbitems.ldonprice
+		$query="SELECT $tbitems.id,$tbitems.Name,$tbitems.price
 				FROM $tbitems,$tbmerchantlist
 				WHERE $tbmerchantlist.merchantid=".$npc["merchant_id"]."
 				AND $tbmerchantlist.item=$tbitems.id
