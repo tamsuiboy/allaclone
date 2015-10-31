@@ -157,7 +157,7 @@ function SpellDescription($spell,$n,$csv=false) {
       case 137: // Limit: Effect(Hitpoints allowed)
       case 138: // Limit: Spell Type(Detrimental only)
       case 141: // Limit: Instant spells only
-      case 150: // Death Save - Restore Full Health
+      case 150: // Death Save - Restore Partial Health
       case 151: // Suspend Pet - Lose Buffs and Equipment
       case 154: // Remove Detrimental
       case 156: // Illusion: Target
