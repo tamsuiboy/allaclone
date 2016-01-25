@@ -16,7 +16,7 @@ print "</tr>\n";
 
 // Display site name, version and contact email
 print "<tr>\n";
-print "<td height='100%' align='center' valign='top' colspan='2'>AllaClone - Version: $cfgversion\n";
+print "<td height='100%' align='center' valign='top' colspan='2'>AllaClone for EQMac - Version: $cfgversion<br />Based off Allaclone release: 2.0.1 - Rev2103\n";
 print "<a href='mailto:".$SiteEmail."'>$SiteEmail</a>\n";
 print "</td>\n";
 print "</tr>\n";

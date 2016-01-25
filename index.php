@@ -2,6 +2,7 @@
 	#ini_set('display_errors', 'On');
 	#error_reporting(E_ALL);
 
+	include('./revision.php');
 	include('./includes/config.php');
 	include($includes_dir.'constantes.php');
 
@@ -70,7 +71,7 @@
 				print "<tr class='" .$RowClass. "'>
 				<td><a href=item.php?id=".$row["item_id"]." id='" . $row["item_id"] . "'>";
 				
-				if(file_exists(getcwd(). "/icons/item_". $row['icon'] . ".gif")){ 
+				if(file_exists(getcwd(). "/icons/item_". $row['icon'] . ".gif")){
 					echo "<img src='".$icons_url. "item_" . $row['icon'].".gif' align='left'/ width='20' height='20'>  "; 
 				}
 				

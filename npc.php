@@ -407,7 +407,12 @@
 		print "<p><b>Killing this NPC lowers factions with : </b><ul>";
 		while ($row=mysql_fetch_array($result))
 		{
-			print "<li><a href=faction.php?id=".$row["id"].">".$row["name"]."</a> (".$row["value"].")"; 
+			if ($ShowNPCFactionHits==TRUE) {
+				print "<li><a href=faction.php?id=".$row["id"].">".$row["name"]."</a> (".$row["value"].")";
+			}
+			else {
+				print "<li><a href=faction.php?id=".$row["id"].">".$row["name"]."</a>";
+			}
 		}
 	}
 	print "</ul>";
@@ -425,7 +430,12 @@
 		print "<p><b>Killing this NPC raises factions with : </b><ul>";
 		while ($row=mysql_fetch_array($result))
 		{
-			print "<li><a href=faction.php?id=".$row["id"].">".$row["name"]."</a> (".$row["value"].")"; 
+			if ($ShowNPCFactionHits==TRUE) {
+				print "<li><a href=faction.php?id=" . $row["id"] . ">" . $row["name"] . "</a> (" . $row["value"] . ")";
+			}
+			else {
+				print "<li><a href=faction.php?id=" . $row["id"] . ">" . $row["name"] . "</a>";
+			}
 		}
 	}
 	print "</ul>";

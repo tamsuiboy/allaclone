@@ -2,6 +2,7 @@
 
 $SiteTitle='EQEmu Server AllaClone';
 $ServerName='EQEmu Server';
+$cfgversion=$current_revision;
 $cfgversion='2.0 - Rev2100';
 $SiteEmail='';
 
@@ -56,6 +57,7 @@ $MaxItemsReturned=50; // max number of items returned by search engines (0=all)
 $MaxNpcsReturned=50; // max number of npcs returned by search engines (0=all)
 $SpawngroupAroundRange=100; // range of surrounding spawngroups, spawngroups page
 $EnableNews=TRUE; // If TRUE, it enables the use of the News (requires SQL Source includes/sql/news.sql)
+$ShowNPCFactionHits=TRUE; // if TRUE, shows factions that killing this npc will change.
 $ShowNpcDropChances=TRUE; // if TRUE, chances of droping of each item will be shown when browsing npcs
 $MerchantsDontDropStuff=TRUE; // if TRUE, you won't see merchants drops, damned PEQ word builders ! :)
 $ShowNPCNumberInZoneLevelList=TRUE; // choose between number and x for npcs in zone levels list
