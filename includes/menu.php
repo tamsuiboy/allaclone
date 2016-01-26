@@ -2,15 +2,6 @@
 
 	print "<table border='0' width='100%'><form name='fullsearch' method='GET' action='fullsearch.php'>\n";
 
-	// Main section
-	print "<tr><td class='menuh' nowrap='1'>Main...</td></tr>\n";
-	print "<tr><td nowrap='1' class='menu_item'><li><a href='".$root_url."index.php'>AllaClone Main Page</a></li></td></tr>\n";
-	print "<tr><td nowrap='1' class='menu_item'><li><a href='http://www.eqemulator.org'>EQEmulator</a></li></td></tr>\n";
-	if($EnableNews)
-	{
-		print "<tr><td nowrap='1' class='menu_item'><li><a href='".$root_url."news.php'>Server News</a></li></td></tr>\n";
-	}
-
 	// Name search
 	print "<tr><td class='menuh' nowrap='1'>Search...<input type='hidden' name='isearchtype' value=''/></td></tr>\n";
 	print "<tr><td><input onfocus=\"if(this.value == 'Name...') { this.value = ''; }\" onkeypress=\"var key=event.keyCode || event.which; if(key==13){ this.form.isearchtype.value = 'name'; this.form.submit(); } else {return true;}\" type='text' name='iname' placeholder='Name...' size='20'/></td></tr>\n";
@@ -18,15 +9,9 @@
 
 	// Zones section
 	print "<tr><td class='menuh' nowrap='1'>Zones...</td></tr>\n";
-	print "<tr><td nowrap='1' class='menu_item'><li><a href='".$root_url."zonelist.php'>Zones by Era</a></li></td></tr>\n";
 	if ($UseCustomZoneList==TRUE)
 	{
 		print "<tr><td nowrap='1' class='menu_item'><li><a href='".$root_url."customzoneslist.php'>Custom Zone List</a></li></td></tr>\n";
-	}
-	else
-	{
-		print "<tr><td nowrap='1' class='menu_item'><li><a href='".$root_url."zones.php'>Populated Zones</a></li></td></tr>\n";
-		print "<tr><td nowrap='1' class='menu_item'><li><a href='".$root_url."zoneslevels.php'>Zones by Level</a></li></td></tr>\n";
 	}
 	// Items section
 	print "<tr><td class='menuh' nowrap='1'>Items...</td></tr>\n";
@@ -80,8 +65,9 @@
 
 	if($UseZAMSearch)
 	{
-		echo '<br><script type="text/javascript">var zam_searchbox_site = "everquest"; var zam_searchbox_format = "160x130"</script>
-			<script type="text/javascript" src="http://zam.zamimg.com/j/searchbox.js"></script></align>';
+		echo '<br>
+			<div class="zam-search"><script type="text/javascript">var zam_searchbox_site = "everquest"; var zam_searchbox_format = "160x130"</script>
+			<script type="text/javascript" src="http://zam.zamimg.com/j/searchbox.js"></script></div></align>';
 	}
 
 ?>

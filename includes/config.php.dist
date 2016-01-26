@@ -1,9 +1,9 @@
 <?php
-
-$SiteTitle='EQEmu Server AllaClone';
-$ServerName='EQEmu Server';
+//$PageTitle='TAKP';
+$PageTitle='<img style="width:25%" src="http://www.takproject.net/forums/styles/logo.png"/>';
+$SiteTitle='TAKP AllaClone';
+$ServerName='The Al`Kabor Project';
 $cfgversion=$current_revision;
-$cfgversion='2.0 - Rev2100';
 $SiteEmail='';
 
 $dbhost="localhost";
@@ -89,7 +89,7 @@ $UseCustomZoneList=FALSE; // If TRUE, will display only the custom zone list in 
 // You can block any zones from the custom zone list by adding "disabled" anywhere in the notes field
 
 
-$ShowHeader=TRUE; // Shows the page header for each page
+//$ShowHeader=TRUE; // Shows the page header for each page
 $UseWikiImages=FALSE; // Use Wiki added images for NPCs and other (not in use yet)
 $IgnoreZones=array("load","loading","load2","nektropos","arttest","apprentice","tutorial");
 $ShowAccount=FALSE; // (not in use yet)

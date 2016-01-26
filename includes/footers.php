@@ -1,25 +1,22 @@
 <?php
 // Close the right-side (content) column
 
-//print "<br/>\n";
-print "</td>\n";
-print "</tr>\n";
-
-// Separation Line
-print "      <tr class='myline' height='6'><td colspan='2'></td></tr>\n";
+//print "<br/>";
+echo "</td>";
+echo "</tr>";
 
 
 // End of Main Content Area
-print "</table></center>\n";
-print "</td>\n";
-print "</tr>\n";
+echo "</table></center>";
+echo "</td>";
+echo "</tr>";
 
 // Display site name, version and contact email
-print "<tr>\n";
-print "<td height='100%' align='center' valign='top' colspan='2'>AllaClone for EQMac - Version: $cfgversion<br />Based off Allaclone release: 2.0.1 - Rev2103\n";
-print "<a href='mailto:".$SiteEmail."'>$SiteEmail</a>\n";
-print "</td>\n";
-print "</tr>\n";
+echo "<tr>";
+echo "<td height='100%' align='center' valign='top' colspan='2'>AllaClone for EQMac - Version: $cfgversion<br />Based off Allaclone release: 2.0.1 - Rev2103";
+echo "<a href='mailto:".$SiteEmail."'>$SiteEmail</a>";
+echo "</td>";
+echo "</tr>";
 
 // Display Theme Selector
 //print "<tr>\n";
@@ -47,8 +44,6 @@ print "</tr>\n";
 //print "</td>\n";
 //print "</tr>\n";
 
-print "</table>\n";
-print "</body>\n";
-print "</html>\n";
-
-?>
+echo "</table>";
+echo "</body>";
+echo "</html>";

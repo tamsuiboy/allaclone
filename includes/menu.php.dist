@@ -4,7 +4,6 @@
 
 	// Main section
 	print "<tr><td class='menuh' nowrap='1'>Main...</td></tr>\n";
-	print "<tr><td nowrap='1' class='menu_item'><li><a href='".$root_url."index.php'>AllaClone Main Page</a></li></td></tr>\n";
 	print "<tr><td nowrap='1' class='menu_item'><li><a href='http://www.eqemulator.org'>EQEmulator</a></li></td></tr>\n";
 	if($EnableNews)
 	{

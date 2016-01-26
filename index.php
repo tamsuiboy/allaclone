@@ -24,9 +24,7 @@
 	$total_pages = GetFieldByQuery("num", "SELECT COUNT(*) as num FROM $tbl_name");
 	// Pagination //
 
-	
-
-	$Title="Wecome to TAKP AllaClone!";
+	$Title="Welcome to TAKP AllaClone!";
 	include($includes_dir.'headers.php');
 
 	// Here's the main page of the website
