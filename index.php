@@ -11,21 +11,22 @@
 	
 	// Pagination //
 	$page = (isset($_GET['page']) ? addslashes($_GET['page']) : 0);
-	$targetpage = "index.php"; 					// File name  (the name of this file)
-	$tbl_name=$tbdiscovereditems;				// Table name
+	$targetpage = "index.php"; 						// File name  (the name of this file)
+	$tbl_name=$tbdiscovereditems;					// Table name
 	if($page)
 	{
-		$start = ($page - 1) * $MaxResultsPerPage; 			//first item to display on this page
+		$start = ($page - 1) * $MaxResultsPerPage; 	//first item to display on this page
 	}
 	else
 	{
-		$start = 0;								//if no page var is given, set start to 0
+		$start = 0;									//if no page var is given, set start to 0
 	}
 	$total_pages = GetFieldByQuery("num", "SELECT COUNT(*) as num FROM $tbl_name");
 	// Pagination //
 
 	$Title="Welcome to TAKP AllaClone!";
 	include($includes_dir.'headers.php');
+    echo'<img style="height:50%;margin-top:2px;" src="'. $root_url .'images/eqmac.jpg"/>';
 
 	// Here's the main page of the website
 

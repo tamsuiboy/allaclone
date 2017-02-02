@@ -21,7 +21,7 @@
 	}
 
 	echo '<head>
-			<link rel="stylesheet" href='. $includes_url . $CssStyle . '.css type="text/css"/>
+			<link rel="stylesheet" href="'. $includes_url . $CssStyle . '.css" type="text/css"/>
 			<title>'.$SiteTitle.' '.( $Title != "" ? " :: $Title" : "").'</title>
 	
 			<script language="javascript">

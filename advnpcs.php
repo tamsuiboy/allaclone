@@ -50,7 +50,7 @@
 			$iname=str_replace('`','%',str_replace(' ','%',addslashes($iname)));
 			$query.=" AND $tbnpctypes.name LIKE '%$iname%'"; 
 		}
-		if ($HideInvisibleMen==TRUE) { $query.=" AND $tbnpctypes.race!=127"; }          
+		if ($HideInvisibleMen ) { $query.=" AND $tbnpctypes.race!=127"; }
 		$query.=" ORDER BY $tbnpctypes.name";
 		$result=mysql_query($query) or message_die('npcs.php','MYSQL_QUERY',$query,mysql_error());
 		$n=mysql_num_rows($result);
