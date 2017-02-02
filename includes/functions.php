@@ -904,9 +904,10 @@ function BuildItemStats($item, $show_name_icon) {
 	$html_string .= "<tr>";
 	$html_string .= "<td colspan='2' nowrap='1'>";
 	$v = "";
-	if($item["itemtype"] == 54)  { $html_string .= "$v AUGMENTATION"; $v = " "; }
 	if($item["magic"] == 1)      { $html_string .= "$v MAGIC ITEM";   $v = " "; }
-	if($item["loreflag"] == 1)   { $html_string .= "$v LORE ITEM";    $v = " "; }
+	if(substr($item["lore"],0,2) == '*#')   { $html_string .= "$v LORE ITEM ARTIFACT";    $v = " "; }
+	elseif(substr($item["lore"],0,1) == '*') { $html_string .= "$v LORE ITEM";    $v = " "; }
+	elseif(substr($item["lore"],0,1) == '#') { $html_string .= "$v ARTIFACT";    $v = " "; }
 	if($item["nodrop"] == 0)     { $html_string .= "$v NODROP";       $v = " "; }
 	if($item["norent"] == 0)     { $html_string .= "$v NORENT";       $v = " "; }
 	$html_string .= "                            </td>";
@@ -974,7 +975,7 @@ function BuildItemStats($item, $show_name_icon) {
 		{
 			$html_string .= "<tr><td width='0%' nowrap='1' colspan='2'><b>".$TypeString.": </b>".$dbitypes[$item["itemtype"]];
 		}
-		if ($item["stackable"] > 0)
+		if ($item["stacksize"] > 0)
 		{
 			$html_string .= " (stackable)";
 		}
