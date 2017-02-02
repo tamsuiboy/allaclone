@@ -917,7 +917,7 @@ function BuildItemStats($item, $show_name_icon) {
 		{
 			$html_string .= "<tr><td width='0%' nowrap='1' colspan='2'><b>".$TypeString.": </b>".$dbitypes[$item["itemtype"]];
 		}
-		if ($item["stacksize"] > 0)
+		if ($item["stacksize"] > 1)
 		{
 			$html_string .= " (stackable)";
 		}
