@@ -1,14 +1,14 @@
-<?php 
-
-/** Displays the results of a query for objects returning the 'id' and 'name' fields.
- *  The query must have been done with at least a limit of '$MaxRowsReturned + 1'.
- *  '$MaxObjectsReturned' can be '0', which means the query had no limits (ex: $MaxNpcsReturned).
- *  '$OpenObjectById' must contain the name of the page used to open one of the object (ex: npc.php) by passing it
- *    the ID by GET method.
- *  'IdAttribute' and 'NameAttribute' are the name of the columns retrieved used for ID and Name (ex: 'id' and 'name').
- *  '$ObjectDescription' is the text describing the kind of objects to display (ex: 'NPC'). '$ObjectsDescription' is the plural.
- */
-function PrintQueryResults($FoundObjects, $MaxObjectsReturned, $OpenObjectByIdPage, $ObjectDescription, $ObjectsDescription, $IdAttribute, $NameAttribute, $ExtraField, $ExtraFieldDescription, $ExtraSkill){
+<?php
+/* Displays the results of a query for objects returning the 'id' and 'name' fields.
+ * The query must have been done with at least a limit of '$MaxRowsReturned + 1'.
+ * '$MaxObjectsReturned' can be '0', which means the query had no limits (ex: $MaxNpcsReturned).
+ * '$OpenObjectById' must contain the name of the page used to open one of the object (ex: npc.php) by passing it
+ *   the ID by GET method.
+ * 'IdAttribute' and 'NameAttribute' are the name of the columns retrieved used for ID and Name (ex: 'id' and 'name').
+ * '$ObjectDescription' is the text describing the kind of objects to display (ex: 'NPC'). '$ObjectsDescription' is the plural. */
+function PrintQueryResults($FoundObjects, $MaxObjectsReturned, $OpenObjectByIdPage,
+                           $ObjectDescription, $ObjectsDescription, $IdAttribute,
+                           $NameAttribute, $ExtraField, $ExtraFieldDescription, $ExtraSkill){
 	global $dbskills;
 	$ObjectsToShow = mysql_num_rows($FoundObjects);
 	if($ObjectsToShow > LimitToUse($MaxObjectsReturned)){
@@ -53,11 +53,9 @@ function PrintQueryResults($FoundObjects, $MaxObjectsReturned, $OpenObjectByIdPa
 		echo  "</ul>\n</ul>\n";
 	}
 }
-
-/** Returns the actual limit to use for queries for the specified limit '$MaxObjects'
- *  Essentially transforms the '0' in a very large integer.
- *  Could be use to put an extra (hard-coded) upper limit to queries.
- */
+/* Returns the actual limit to use for queries for the specified limit '$MaxObjects'
+ * Essentially transforms the '0' in a very large integer.
+ * Could be use to put an extra (hard-coded) upper limit to queries. */
 function LimitToUse($MaxObjects)
 {
 	if($MaxObjects == 0)
@@ -66,11 +64,8 @@ function LimitToUse($MaxObjects)
 		$Result = $MaxObjects;
 	return $Result;
 }
-
-/** Returns the "readable" name of an NPC from its database-encoded '$DbName'.
- */
-function ReadableNpcName($DbName)
-{
+/* Returns the "readable" name of an NPC from its database-encoded '$DbName'. */
+function ReadableNpcName($DbName) {
 	$Result = str_replace('-', '`', str_replace('_', ' ', str_replace('#', '', str_replace('!', '', str_replace('~', '', $DbName)))));
 	for ($i = 0; $i < 10; $i++)
 	{
@@ -78,9 +73,7 @@ function ReadableNpcName($DbName)
 	}
 	return $Result;
 }
-
-/** Returns the type of NPC based on the name of an NPC from its database-encoded '$DbName'.
- */
+/* Returns the type of NPC based on the name of an NPC from its database-encoded '$DbName'. */
 function NpcTypeFromName($DbName)
 {
 	global $NPCTypeArray;
@@ -96,16 +89,12 @@ function NpcTypeFromName($DbName)
 	}
 	return "Normal";
 }
-
 // Converts the first letter of each word in $str to upper case and the rest to lower case.
-function ucfirstwords($str)
-{
+function ucfirstwords($str) {
 	return ucwords(strtolower($str));
 }
-
-/** Returns the URL in the Wiki to the image illustrating the NPC with ID '$NpcId'
- *  Returns an empty string if the image does not exist in the Wiki
- */
+/* Returns the URL in the Wiki to the image illustrating the NPC with ID '$NpcId'
+ * Returns an empty string if the image does not exist in the Wiki */
 function NpcImage($WikiServerUrl, $WikiRootName, $NpcId)
 { $SystemCall = "wget -q \"".$WikiServerUrl.$WikiRootName."/index.php/Image:Npc-".$NpcId.".jpg\" -O -| grep \"/".$WikiRootName."/images\" | head -1 | sed 's;.*\\(/".$WikiRootName."/images/[^\"]*\\).*;\\1;'";
   $Result = `$SystemCall`;
@@ -114,10 +103,7 @@ function NpcImage($WikiServerUrl, $WikiRootName, $NpcId)
 
   return $Result;
 }
-
-
-/** Returns a uniform value 'Yes'/'No' for many ways of modelling a predicate.
- */
+/* Returns a uniform value 'Yes'/'No' for many ways of modelling a predicate. */
 function YesNo($val)
 { switch (strtolower($val))
   { case TRUE:
@@ -134,12 +120,10 @@ function YesNo($val)
   }
   return $Result;
 }
-
-/** Returns a human-readable translation of '$sec' seconds (for respawn times)
- *  If '$sec' is '0', returns 'time' (prints 'Spawns all the time' as a result)
- */
-function translate_time($sec)
-{ if($sec == 0)
+/* Returns a human-readable translation of '$sec' seconds (for respawn times)
+ * If '$sec' is '0', returns 'time' (prints 'Spawns all the time' as a result) */
+function translate_time($sec) {
+  if($sec == 0)
     $Result = "time";
   else
   { $h = floor($sec / 3600);
@@ -149,16 +133,13 @@ function translate_time($sec)
   }
   return $Result;
 }
-
 function make_thumb($FileSrc) {
   // If PHP is installed with GD and jpeg support, uncomment the following line
   //execute_make_thumb($FileSrc);
 }
-
 // This function (execute_make_thumb) requires to install PHP with GD & jpeg-6 support
 // GD -> http://www.boutell.com/gd/
 // JPEG -> ftp://ftp.uu.net/graphics/jpeg/
-// 
 function execute_make_thumb($FileSrc){
   $tnH=100;
   $size=getimagesize($FileSrc); 
@@ -171,11 +152,9 @@ function execute_make_thumb($FileSrc){
   $tn_name = preg_replace("/\.(gif|jpe|jpg|jpeg|png|wbmp)$/i","_tn",$tn_name);
   imagejpeg($dest, $tn_name.".jpg");
 }
-
-/** Returns the rest of the euclidian division of '$d' by '$v'
- *  Returns '0' if '$v' equals '0'
- *  Supposes '$d' and '$v' are positive
- */
+/* Returns the rest of the euclidian division of '$d' by '$v'
+ * Returns '0' if '$v' equals '0'
+ * Supposes '$d' and '$v' are positive */
 function modulo($d,$v)
 { if($v == 0)
     $Result = 0;
@@ -184,9 +163,7 @@ function modulo($d,$v)
     $Result = $d - $v * $s;
   }
 }
-
-/** Returns the list of slot names '$val' corresponds to (as a bit field)
- */
+/* Returns the list of slot names '$val' corresponds to (as a bit field) */
 function getslots($val)
 { global $dbslots;
   reset($dbslots);
@@ -200,7 +177,6 @@ function getslots($val)
   } while (next($dbslots));
   return $Result;
 }
-
 function getclasses($val) {
   global $dbiclasses;
   reset($dbiclasses);
@@ -210,7 +186,6 @@ function getclasses($val) {
   } while (next($dbiclasses));
   return $res;
 }
-
 function getraces($val) {
   global $dbraces;
   reset($dbraces);
@@ -220,7 +195,6 @@ function getraces($val) {
   } while (next($dbraces));
   return $res;
 }
-
 function getsize($val) {
   switch($val) {
     case 0: return "Tiny"; break;
@@ -231,7 +205,6 @@ function getsize($val) {
     default: return "$val?"; break;
   }
 }
-
 function getspell($id) {
 	global $tbspells,$tbspellglobals,$UseSpellGlobals;
 	if ($UseSpellGlobals==TRUE)
@@ -248,7 +221,6 @@ function getspell($id) {
 	$s=mysql_fetch_array($result);
 	return $s;
 }
-
 function gedeities($val) {
   global $dbideities;
   reset($dbideities);
@@ -258,7 +230,6 @@ function gedeities($val) {
   } while (next($dbideities));
   return $res;
 }
-
 function SelectClass($name,$selected) {
   global $dbclasses;
   print "<SELECT name=\"$name\">";
@@ -270,7 +241,6 @@ function SelectClass($name,$selected) {
   } 
   print "</SELECT>";
 }
-
 function SelectDeity($name,$selected) {
   global $dbideities;
   print "<SELECT name=\"$name\">";
@@ -282,7 +252,6 @@ function SelectDeity($name,$selected) {
   } 
   print "</SELECT>";
 }
-
 function SelectRace($name,$selected) {
   global $dbraces;
   print "<SELECT name=\"$name\">";
@@ -294,7 +263,6 @@ function SelectRace($name,$selected) {
   } 
   print "</SELECT>";
 }
-
 function SelectMobRace($name,$selected) {
 	global $dbiracenames;
 	print "<SELECT name=\"$name\">";
@@ -307,7 +275,6 @@ function SelectMobRace($name,$selected) {
 	}
 	print "</SELECT>";
 }
-
 function SelectIClass($name,$selected) {
 	global $dbiclasses;
 	print "<SELECT name=\"$name\">";
@@ -320,7 +287,6 @@ function SelectIClass($name,$selected) {
 	}   
 	print "</SELECT>";
 }
-
 function SelectIType($name,$selected) {
   global $dbitypes;
   print "<SELECT name=\"$name\">";
@@ -334,7 +300,6 @@ function SelectIType($name,$selected) {
   } while (next($dbitypes));  
   print "</SELECT>";
 }
-
 function SelectSlot($name,$selected) {
   global $dbslots;
   print "<SELECT name=\"$name\">";
@@ -348,7 +313,6 @@ function SelectSlot($name,$selected) {
   } while (next($dbslots));  
   print "</SELECT>";
 }
-
 function SelectSpellEffect($name,$selected) {
 	global $dbspelleffects;
 	print "<SELECT name=\"$name\">";
@@ -367,7 +331,6 @@ function SelectSpellEffect($name,$selected) {
 	while (next($dbspelleffects));  
 	print "</SELECT>";
 }
-
 function SelectAugSlot($name,$selected) {
   print "<SELECT name=\"$name\">";
   print "<option value='0'>-</option>\n";
@@ -378,7 +341,6 @@ function SelectAugSlot($name,$selected) {
   }
   print "</SELECT>";
 }
-
 function SelectLevel($name,$maxlevel,$selevel) {
 	print "<SELECT name=\"$name\">";
 	print "<option value='0'>-</option>\n";
@@ -390,7 +352,6 @@ function SelectLevel($name,$maxlevel,$selevel) {
 	} 
 	print "</SELECT>";
 }
-
 function SelectTradeSkills($name,$selected) {
   print "<SELECT name=\"$name\">";
   WriteIt("0","-",$selected);
@@ -408,7 +369,6 @@ function SelectTradeSkills($name,$selected) {
   WriteIt("57","Tinkering",$selected);
   print "</SELECT>";
 }
-
 function WriteIt($value,$name,$sel) {
   print "  <option value='".$value."'";
   if ($value==$sel) { print " selected='1'"; }
@@ -437,7 +397,6 @@ function SelectStats($name,$stat) {
   WriteIt("enduranceregen","Endurance Regen",$stat);
   print "</select>\n";
 }
-
 function SelectHeroicStats($name,$heroic) {
   print "<select name=\"$name\">\n";
   print "  <option value=''>-</option>\n";
@@ -456,7 +415,6 @@ function SelectHeroicStats($name,$heroic) {
   WriteIt("heroic_svcorrup","Heroic Resist Corruption",$heroic);
   print "</select>\n";
 }
-
 function SelectResists($name,$resist) {
   print "<select name=\"$name\">\n";
   print "  <option value=''>-</option>\n";
@@ -468,7 +426,6 @@ function SelectResists($name,$resist) {
   WriteIt("svcorruption","Resist Corruption",$resist);
   print "</select>\n";
 }
-
 function SelectModifiers($name,$mod) {
   print "<select name=\"$name\">\n";
   print "  <option value=''>-</option>\n";
@@ -490,7 +447,6 @@ function SelectModifiers($name,$mod) {
   WriteIt("stunresist","Stun Resist",$mod);
   print "</select>\n";
 }
-
 function GetItemStatsString($name,$stat,$stat2,$stat2color) {
 
 	if (!$stat2) { $stat2 = 0; }
@@ -535,7 +491,6 @@ function GetItemStatsString($name,$stat,$stat2,$stat2color) {
 	}
 	return $PrintString;
 }
-
 // spell_effects.cpp int Mob::CalcSpellEffectValue_formula(int formula, int base, int max, int caster_level, int16 spell_id)
 function CalcSpellEffectValue($form,$base,$max,$lvl) { 
  // print " (base=$base form=$form max=$max, lvl=$lvl)";
@@ -596,7 +551,6 @@ function CalcSpellEffectValue($form,$base,$max,$lvl) {
 	if (($base<0) && ($result>0)) { $result*=-1; }
   return $result;
 }
-
 function CalcBuffDuration($lvl,$form,$duration) { // spells.cpp, carefull, return value in ticks, not in seconds
   //print " Duration lvl=$lvl, form=$form, duration=$duration ";
 	switch($form) {
@@ -652,7 +606,6 @@ function CalcBuffDuration($lvl,$form,$duration) { // spells.cpp, carefull, retur
 			return ($duration?$duration:3600);
 	}
 }
-
 function SpecialAttacks($att) {
   $data=''; $v='';
   // from mobs.h
@@ -679,7 +632,6 @@ function SpecialAttacks($att) {
   }
   return $data; 
 }
-
 function price($price) {
   $res="";
   if ($price>=1000) { 
@@ -701,18 +653,15 @@ function price($price) {
   if ($c>0) { $res.=$sep.$c."c"; }
   return $res;
 }
-
 function sign($val) {
   if ($val>0) { return "+$val"; } else { return $val; }
 }
 function WriteDate($d) {
   return date("F d, Y",$d);
 }
-
 function isinteger($val) {
    return (intval($val)==$val);
 }
-
 function CanThisNPCDoubleAttack($class,$level) { // mob.cpp
   if ($level>26) { return true; } #NPC over lvl 26 all double attack
   switch ($class) {
@@ -738,7 +687,6 @@ function CanThisNPCDoubleAttack($class,$level) { // mob.cpp
   }
   return false;
 }
-
 // Automatically format and populate the table based on the query
 function AutoDataTable($Query) {
 	$result = mysql_query($Query);
@@ -775,7 +723,6 @@ function AutoDataTable($Query) {
 	}
 	echo "</tbody></table>";
 }
-
 function CreateToolTip($ID, $Content){
 	$Content = preg_replace("/'/i", "\'", $Content);
 	echo '<script type="text/javascript">
@@ -788,8 +735,6 @@ function CreateToolTip($ID, $Content){
 		});
 	</script>';
 }
-
-
 function Pagination($targetpage, $page, $total_pages, $limit, $adjacents)
 {
 
@@ -878,15 +823,12 @@ function Pagination($targetpage, $page, $total_pages, $limit, $adjacents)
 		$pagination.= "</div>\n";		
 	}
 	return $pagination;
-}	
-
-
-
+}
 // Function to build item stats tables
 // Used for item.php as well as for tooltips for items
 function BuildItemStats($item, $show_name_icon) {
 
-	global $dbitypes, $dam2h, $dbbagtypes, $dbskills, $icons_url, $tbspells, $dbiaugrestrict, $dbiracenames;
+	global $dbitypes, $dam2h, $dbbagtypes, $dbskills, $icons_url, $tbspells, $dbiaugrestrict, $dbiracenames, $dbelements, $dbbodytypes;
 
 	$Tableborder = 0;
 
@@ -1268,7 +1210,10 @@ function BuildItemStats($item, $show_name_icon) {
 	$html_string .= "</td></tr></table>";
 
 	return $html_string;
-
 }
-
-?>
+function debug($data){
+    print "<pre>";
+    print "Admin Debug Panel:\r\n";
+    print print_r($data);
+    print "</pre>";
+}

@@ -13,7 +13,7 @@ echo "</tr>";
 
 // Display site name, version and contact email
 echo "<tr>";
-echo "<td height='100%' align='center' valign='top' colspan='2'>AllaClone for EQMac - Version: $cfgversion<br />Based off Allaclone release: 2.0.1 - Rev2103";
+echo "<td height='100%' align='center' valign='top' colspan='2'>AllaClone for EQMac - Version: ". $cfgversion ."<br />Based off Allaclone release: 2.0.1 - Rev2103";
 echo "<a href='mailto:".$SiteEmail."'>$SiteEmail</a>";
 echo "</td>";
 echo "</tr>";

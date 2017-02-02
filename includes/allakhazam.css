@@ -29,7 +29,7 @@ BODY {
 	border-right:		1px solid #696969;
 	border-bottom: 		1px solid rgb(229, 229, 229);
 	min-height: 		110px;
-	background: 		url("../images/bgmenu_title_alla.gif") repeat scroll 0% 0% transparent;
+	background: 		url("../images/bgmenu_title_alla.gif") repeat scroll 0 0 transparent;
 }
 A:link { 
 	text-decoration:	none;

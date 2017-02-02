@@ -142,7 +142,7 @@
 		if($inodrop)       { $Query.=" $s ($tbitems.nodrop=1)";              $s="AND"; }
 		$Query.=" GROUP BY $tbitems.id ORDER BY $tbitems.Name LIMIT ".(LimitToUse($MaxItemsReturned) + 1);
 		$QueryResult = mysql_query($Query) or message_die('items.php','MYSQL_QUERY',$Query,mysql_error());
-
+		//print $Query;
 		if(mysql_num_rows($QueryResult) == 1)
 		{
 			$row = mysql_fetch_array($QueryResult);

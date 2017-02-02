@@ -14,7 +14,12 @@ function SpellDescription($spell,$n,$csv=false) {
     $min=CalcSpellEffectValue($spell["formula".$n],$spell["effect_base_value$n"],$spell["max$n"],$minlvl);
     $max=CalcSpellEffectValue($spell["formula".$n],$spell["effect_base_value$n"],$spell["max$n"],$ServerMaxLevel);
 	$base_limit = $spell["effect_limit_value$n"];
+    //debug($spell['name']." ".$min." ".$max);
+      //debug($spell["formula".$n]." ".$spell["effect_base_value$n"]." ".$spell["max$n"]." ".$minlvl."x");
     if (($min<$max) AND ($max<0))  { $tn=$min; $min=$max; $max=$tn; }
+      if($spell["effectid$n"] != 254 AND $spell["effectid$n"] != 10) {
+          //print 'Debug effectid: '. $spell["effectid$n"] .'<br>';
+      }
     if ($csv==true) { print ",,"; }
     else { print "<b>$n : Effect type : </b>"; }
     switch ($spell["effectid$n"]) {

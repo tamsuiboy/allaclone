@@ -6,11 +6,14 @@ include($includes_dir.'headers.php');
 include($includes_dir.'mysql.php');
 include($includes_dir.'functions.php');
 
-print "<p><b>The suggested levels are approximate based upon the levels of the majority of creatures found in the zone, and, except for the newbie zones, assume that you will hunt with a group.  Most zones also have some higher and lower level monsters roaming the area, and can thus be selectively hunted at different levels.  Follow the links to get more complete descriptions for the individual zones.</b><p>";
+print "<p><center><b>The suggested levels are approximate based upon the levels of the majority of creatures found in the zone.<br />
+            Except for the newbie zones, this assumes that you will hunt with a group.<br />
+            Most zones also have higher and lower level roaming npcs, and are selectively hunted at different levels.</b></center></p>";
 if ($SortZoneLevelList==TRUE) {
-  print "<p><b>Zones are sorted following average npc's levels. If a newbie zone contains high level friendly guards, they count in the average level and false the sort.</b><p>";
+  print "<p><center><b>Zones are sorted following average npc\'s levels.<br />
+                If a newbie zone contains high level friendly guards, they count in the average level and false the sort.</b></center></p>";
 }
-
+print "<p><center><b>Follow the links to get more complete descriptions for the individual zones.</b></center></p>";
 // Tweak the second SQL query to your needs, if for example you added a field for trigger npcs, or guards, filter it !
 // In the default config, invisible men and level 1 npcs are ignored (there's enough lvl 2-5 npcs in newbie zones to have them marked at that lvl)
 
@@ -92,6 +95,9 @@ if ($SortZoneLevelList==TRUE) {
     }
   } while ($end==FALSE);
 } // end SortZoneLevelList
+//print "<div style='background:white;'><pre>";
+//print print_r($zones);
+//print "</pre></div>";
 
 
 print "<table border=0 width=100%><tr valign=top><td width=100%>";
