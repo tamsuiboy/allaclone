@@ -117,7 +117,7 @@
 				WHERE $tbnpcfaction.id=".$npc["npc_faction_id"]." 
 				AND $tbnpcfaction.primaryfaction=$tbfactionlist.id";
 	  $faction=GetRowByQuery($query);
-	  print "<tr><td nowrap='1'><b>Main faction : </b></td><td><a href='faction.php?id=".$faction["id"]."'>".$faction["name"]."</a></td></tr>";
+	  # print "<tr><td nowrap='1'><b>Main faction : </b></td><td><a href='faction.php?id=".$faction["id"]."'>".$faction["name"]."</a></td></tr>";
 	}
 	if ($npc["findable"]==1)
 	{
