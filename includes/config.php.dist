@@ -71,7 +71,6 @@ $ShowNpcsAttackSpeed=TRUE; // shows informations about NPCs' attack speed
 $ShowNpcsAverageDamages=TRUE; // How much NPC does as melee damages, in average, this allows to comparate mobs together
 $DisplayNamedNPCsInfo=TRUE; // If TRUE, will display a link to show named NPCs and export to CVS for maps
 $DisplayNPCStats=TRUE; // If TRUE, will display HP, Damage, Special Attacks, etc for NPCs
-$TrackableNPCsOnly=TRUE; // If TRUE, will only display NPCs that are set to be trackable in search results
 $DisplaySpawnGroupInfo=TRUE; // If TRUE, will display the spawngroup link from the zone pages
 $DisplayTaskInfo=TRUE; // If TRUE, will allow search results to show tasks and rewards
 $DisplayTaskActivities=TRUE; // If TRUE, will display all task activities

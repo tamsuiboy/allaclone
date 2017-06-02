@@ -71,7 +71,7 @@
 		}
 	}
 
-	if ((ReadableNpcName($npc["name"])) == '' || ($npc["trackable"] == 0 && $TrackableNPCsOnly==TRUE))
+	if ((ReadableNpcName($npc["name"])) == '')
 	{
 		header("Location: npcs.php");
 		exit();
@@ -118,10 +118,6 @@
 				AND $tbnpcfaction.primaryfaction=$tbfactionlist.id";
 	  $faction=GetRowByQuery($query);
 	  # print "<tr><td nowrap='1'><b>Main faction : </b></td><td><a href='faction.php?id=".$faction["id"]."'>".$faction["name"]."</a></td></tr>";
-	}
-	if ($npc["findable"]==1)
-	{
-		print " (findable)";
 	}
 
 	print "</td></tr>";

@@ -48,7 +48,7 @@ print "</tr></table></center>";
 
 if ($mode=="npcs") {
 	////////////// NPCS
-	$query="SELECT $tbnpctypes.id,$tbnpctypes.class,$tbnpctypes.level,$tbnpctypes.trackable,$tbnpctypes.maxlevel,$tbnpctypes.race,$tbnpctypes.name,$tbnpctypes.maxlevel,$tbnpctypes.loottable_id
+	$query="SELECT $tbnpctypes.id,$tbnpctypes.class,$tbnpctypes.level,$tbnpctypes.maxlevel,$tbnpctypes.race,$tbnpctypes.name,$tbnpctypes.maxlevel,$tbnpctypes.loottable_id
 		FROM $tbnpctypes,$tbspawn2,$tbspawnentry,$tbspawngroup";
 	$query.=" WHERE $tbspawn2.zone='$name'
 		AND $tbspawnentry.spawngroupID=$tbspawn2.spawngroupID
@@ -80,7 +80,7 @@ if ($mode=="npcs") {
 		$RowClass = "lr";
 		while ($row=mysql_fetch_array($result))
 		{
-			if ((ReadableNpcName($row["name"])) != '' && ($row["trackable"] > 0 || $TrackableNPCsOnly==FALSE))
+			if ((ReadableNpcName($row["name"])) != '')
 			{
 				print "<tr class='" .$RowClass. "'>";
 				if ($ZoneDebug==TRUE) { print "<td>".$row["id"]."</td>"; }
