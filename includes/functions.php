@@ -1218,3 +1218,15 @@ function debug($data){
     print print_r($data);
     print "</pre>";
 }
+function isadmin(){
+	global $admin;
+	if ($_SERVER['REMOTE_ADDR'] === $admin){
+		return true;
+	}
+	return false;
+}
+function admindebug($content) {
+	if (isadmin()) {
+		debug($content);
+	}
+}

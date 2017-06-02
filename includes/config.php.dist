@@ -6,6 +6,8 @@ $ServerName='The Al`Kabor Project';
 $cfgversion=$current_revision;
 $SiteEmail='';
 
+$admin = '127.0.0.1';
+
 $dbhost="localhost";
 $dbname="peq";
 $dbuser="username";

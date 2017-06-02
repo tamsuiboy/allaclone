@@ -8,7 +8,9 @@
 
 	include($includes_dir.'mysql.php');
 	include($includes_dir.'functions.php');
-	
+
+	//admindebug('test');
+
 	// Pagination //
 	$page = (isset($_GET['page']) ? addslashes($_GET['page']) : 0);
 	$targetpage = "index.php"; 						// File name  (the name of this file)
