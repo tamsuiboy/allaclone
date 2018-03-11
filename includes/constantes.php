@@ -141,7 +141,7 @@ $dbslots[16]="Ear";
 $dbslots[8]="Face";
 $dbslots[4]="Head";
 $dbslots[2]="Ear"; 
-$dbslots[1]="Cursor"; 
+$dbslots[1]="Held"; 
 
 // ItemClasses 2^(class-1)
 $dbiclasses=array();
