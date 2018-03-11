@@ -145,7 +145,7 @@ $dbslots[1]="Cursor";
 
 // ItemClasses 2^(class-1)
 $dbiclasses=array();
-$dbiclasses[32768]="All classes";
+$dbiclasses[32767]="All classes";
 $dbiclasses[16384]="Beastlord";
 $dbiclasses[8192]="Enchanter";
 $dbiclasses[4096]="Magician";
@@ -164,7 +164,7 @@ $dbiclasses[1]="Warrior";
 
 // races
 $dbraces=array();
-$dbraces[16384]="All races";
+$dbraces[16383]="All races";
 $dbraces[8192]="Vah Shir";
 $dbraces[4096]="Iksar";
 $dbraces[2048]="Gnome";
